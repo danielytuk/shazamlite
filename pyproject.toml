@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shazamlite"
+description = "Lightweight, reliable Shazam recognition for Python with a pure-Python fingerprinting engine."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+keywords = ["shazam", "audio", "fingerprinting", "recognition", "music", "itunes"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+]
+dependencies = ["numpy>=1.21"]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://dytuk.media/shazamlite"
+Repository = "https://github.com/danielytuk/shazamlite"
+Issues = "https://github.com/danielytuk/shazamlite/issues"
+Documentation = "https://github.com/danielytuk/shazamlite#readme"
+
+[project.optional-dependencies]
+curl-cffi = ["curl_cffi>=0.6.0"]
+soundfile = ["soundfile>=0.12"]
+miniaudio = ["miniaudio>=1.57"]
+tzlocal = ["tzlocal>=5.0"]
+mic = ["sounddevice>=0.4.6"]
+pydub = ["pydub>=0.25"]
+all = [
+    "curl_cffi>=0.6.0",
+    "soundfile>=0.12",
+    "miniaudio>=1.57",
+    "tzlocal>=5.0",
+    "sounddevice>=0.4.6",
+]
+dev = ["pytest>=7", "ShazamIO>=0.8"]
+
+[project.scripts]
+shazamlite = "shazamlite.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["shazamlite*"]
+
+[tool.setuptools.dynamic]
+version = { attr = "shazamlite._version.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
