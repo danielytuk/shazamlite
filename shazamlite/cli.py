@@ -94,6 +94,9 @@ def main(argv=None):
                 _print_json(client.artist_about(args.artist_id))
     except ShazamError as error:
         print("error: %s" % error, file=sys.stderr)
+        hint = getattr(error, "hint", None)
+        if hint:
+            print("hint: %s" % hint, file=sys.stderr)
         return 1
     return 0
 

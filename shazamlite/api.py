@@ -12,7 +12,6 @@ from .constants import (
     DEFAULT_LANG,
     ENDPOINTS,
     HEADERS_DISCOVERY,
-    HEADERS_EXTENSION,
 )
 from .errors import BadData, NoMatch
 from .http import HTTPClient
@@ -229,8 +228,7 @@ class Shazam:
             "lang": self.language,
             "country": self.country,
         }
-        headers = dict(HEADERS_EXTENSION)
-        headers.update({"Content-Type": "application/json"})
+        headers = {"Content-Type": "application/json"}
         result = self.http.request(
             "POST",
             ENDPOINTS["match_extensionv2"],

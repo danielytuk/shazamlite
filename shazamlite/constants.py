@@ -10,26 +10,10 @@ ENDPOINTS = {
     "locations": "https://www.shazam.com/services/charts/locations",
 }
 
-EXTENSION_ORIGIN = "chrome-extension://mmioliijnhnoblpgimnlajmefafdfilb"
-
 EXTENSION_UA = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
 )
-
-HEADERS_EXTENSION = {
-    "Origin": EXTENSION_ORIGIN,
-    "Sec-Fetch-Site": "none",
-    "Sec-Fetch-Mode": "cors",
-    "Sec-Fetch-Dest": "empty",
-    "Sec-Ch-Ua": '"Chromium";v="128", "Google Chrome";v="128", "Not=A?Brand";v="99"',
-    "Sec-Ch-Ua-Mobile": "?0",
-    "Sec-Ch-Ua-Platform": '"Windows"',
-    "Sec-Ch-Ua-Platform-Version": '"10.0.0"',
-    "User-Agent": EXTENSION_UA,
-    "X-Shazam-Platform": "iOS",
-    "X-Shazam-AppVersion": "17.1.0",
-}
 
 HEADERS_DISCOVERY = {
     "User-Agent": EXTENSION_UA,

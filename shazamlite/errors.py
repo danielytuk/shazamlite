@@ -1,3 +1,6 @@
+from typing import Optional
+
+
 class ShazamError(Exception):
     pass
 
@@ -33,3 +36,14 @@ class HTTPStatusError(ShazamError):
         super().__init__(
             "HTTP %s from %s: %r" % (status_code, url, body[:500])
         )
+
+    @property
+    def hint(self) -> Optional[str]:
+        """A human-readable hint for common blocking statuses, if any."""
+        if self.status_code in (403, 405, 429):
+            return (
+                "This looks like a network-level block. Shazam/Fastly rejects "
+                "VPN, proxy and datacenter exit IPs with 403/405. Disconnect "
+                "any VPN or proxy, then retry."
+            )
+        return None

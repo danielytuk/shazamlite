@@ -120,6 +120,21 @@ All errors derive from `ShazamError`.
 
 429/5xx responses are retried with exponential backoff + jitter (default 3 attempts).
 
+## Troubleshooting
+
+**403 / 405 from Shazam?** Shazam's edge (Fastly) blocks VPN, proxy and
+datacenter exit IPs. Disconnect any VPN/proxy first — a 403/405 here is almost
+always a network-level block, not a code issue. `HTTPStatusError` carries a
+`.hint` property that says the same, and the CLI prints it.
+
+> **VPN users:** we're actively working on a fix so VPN/proxy connections work
+> out of the box. Until then, run without a VPN or proxy (or with a residential
+> exit) for reliable recognition.
+
+**Shazam changed something server-side?** Follow the maintenance runbook in
+[`plan.md`](plan.md) — it covers grabbing the latest extension source, diffing
+endpoints/payloads/signatures, applying fixes, and testing with `example_test.wav`.
+
 ## Development
 
 ```bash
